@@ -1,0 +1,91 @@
+# ----------------------------------------------------------------------
+# file:     ~/.config/termite/config
+# author:   moparx     - http://moparx.com/configs
+# last mod: 07/20/2014 - 18:12 EDT
+# vim: set ai et fenc=utf-8 ft=conf nu si sts=0 sw=4 ts=8 tw=0 :
+# ----------------------------------------------------------------------
+
+[options]
+    resize_grip = false
+    scroll_on_output = false
+    scroll_on_keystroke = true
+    audible_bell = true
+    visible_bell = false
+    mouse_autohide = true
+    allow_bold = true
+    dynamic_title = true
+    urgent_on_bell = true
+    clickable_url = true
+    font = Source Code Pro Medium 10
+    letterSpace = 1
+    scrollback_lines = 1000
+    search_wrap = true
+    #icon_name = terminal
+    #geometry = 640x480
+
+    # "system", "on" or "off"
+    cursor_blink = system
+
+    # "block", "underline" or "ibeam"
+    cursor_shape = block
+
+    # $BROWSER is used by default
+    browser = firefox
+
+    # word characters used for word selection
+    # (default if unset: all graphic non-punctuation/space characters)
+    #word_chars = -A-Za-z0-9,./?%&#:_=+@~
+
+[colors]
+    # special
+    foreground      = #c7ccd1
+    foreground_bold = #c7ccd1
+    cursor          = #c7ccd1
+    #background      = #080909
+    background      = rgba(0, 0, 0, 0.90)
+    
+    # black
+    color0  = #1c2023
+    color8  = #747c84
+    
+    # red
+    color1  = #c7ae95
+    color9  = #c7ae95
+    
+    # green
+    color2  = #95c7ae
+    color10 = #95c7ae
+    
+    # yellow
+    color3  = #aec795
+    color11 = #aec795
+    
+    # blue
+    color4  = #ae95c7
+    color12 = #ae95c7
+    
+    # magenta
+    color5  = #c795ae
+    color13 = #c795ae
+    
+    # cyan
+    color6  = #95aec7
+    color14 = #95aec7
+    
+    # white
+    color7  = #c7ccd1
+    color15 = #f3f4f5
+
+
+[hints]
+    #foreground = #55FFFF
+
+    #font = Monospace 9
+    #foreground = #dcdccc
+    #background = #3f3f3f
+    #padding = 2
+    #border = #3f3f3f
+    #border_width = 0.5
+    #roundness = 2.0
+
+
