@@ -6,3 +6,4 @@
   - feh
   - maim
   - xrandr
+  - compton
