@@ -5,7 +5,7 @@
 
 - Run `make` to create sym links for configs in repo directory to home directory
 
-- Can speciy only individual config files: `make vim`
+- Can specify only individual config files: `make vim`
 
 - Run `make clean` to remove created sym links in home directory
 
