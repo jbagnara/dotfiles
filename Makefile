@@ -16,6 +16,8 @@ termite:
 
 .PHONY: vim
 vim:
+	mkdir -p $(HOME)/.vim
+	ln -fs $(DOTFILES)/.vim/* $(HOME)/.vim
 	ln -fs $(DOTFILES)/.vimrc $(HOME)/.vimrc
 
 .PHONY: bash
@@ -28,5 +30,6 @@ clean:
 	rm $(HOME)/.config/i3/i3blocks.conf
 	rm $(HOME)/.config/i3/i3blocks
 	rm $(HOME)/.config/termite
+	rm $(HOME)/.vim
 	rm $(HOME)/.vimrc
 	rm $(HOME)/.bashrc

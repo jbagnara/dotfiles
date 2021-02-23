@@ -192,6 +192,7 @@ bar {
 bar {
 		output $d2
 		tray_output none
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
 }
 
 #Border configs
