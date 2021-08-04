@@ -12,8 +12,8 @@
 set $mod Mod1
 
 #set displays
-set $d1 DisplayPort-1
-set	$d2 DisplayPort-0
+set $d1 DP-1
+set	$d2 DP-2
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -201,7 +201,7 @@ hide_edge_borders both
 
 
 #Monitor outputs
-exec xrandr --output DisplayPort-0 --mode 1366x768 --pos 1920x312 --rotate normal --output DisplayPort-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-A-0 --off --output HDMI-A-1 --off --output DVI-D-0 --off
+exec xrandr --output DisplayPort-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal --output DisplayPort-1 --mode 1366x768 --pos 0x312 --rotate normal --output HDMI-A-0 --off --output HDMI-A-1 --off --output DVI-D-0 --off
 
 workspace 1 output $d1
 workspace 2 output $d2
