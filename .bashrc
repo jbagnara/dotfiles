@@ -5,13 +5,17 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# vi mode
+set -o vi
 
 #bash prompt
 PS1='[\u \W]\$ '
 
-#set terminal emulator
+# set terminal emulator
 export TERM=xterm-color
 
-#aliases
-alias svim="vim -c \"set tabstop=4 softtabstop=-1 shiftwidth=0 expandtab\"" # vim shane mode
+###
+# aliases
+#
 alias ls='ls --color=auto'  #enable ls colors
+alias tat='tmux attach-session -t'
