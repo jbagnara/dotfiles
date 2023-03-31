@@ -1,35 +1,42 @@
-DOTFILES := $(shell pwd)
+DOTFILES	:= $(shell pwd)
+CONF		:= $(HOME)/.config
+SWAY		:= $(CONF)/sway
+TERMITE	 := $(CONF)/termite
+I3BLOCKS	:= $(SWAY)/i3blocks
+VIM			:= $(HOME)/.vim
+
+RM		  := rm -rf
 
 .PHONY: all
-all: i3 termite vim bash
+all: sway termite vim bash
 
-.PHONY: i3
-i3:
-	mkdir -p $(HOME)/.config/i3/i3blocks
-	ln -fs $(DOTFILES)/i3config $(HOME)/.config/i3/config
-	ln -fs $(DOTFILES)/i3blocks.conf $(HOME)/.config/i3/i3blocks.conf
-	ln -fs $(DOTFILES)/i3blocks/* $(HOME)/.config/i3/i3blocks/
+.PHONY: sway
+sway: i3blocks
+	mkdir -p $(SWAY)
+	ln -fs $(DOTFILES)/sway/* $(SWAY)/
+
+.PHONY: i3blocks
+i3blocks:
+	mkdir -p $(I3BLOCKS)
+	ln -fs $(DOTFILES)/i3blocks/* $(I3BLOCKS)/
 
 .PHONY: termite
 termite:
-	if [ ! -d "$(HOME)/termite" ]; then ln -fs $(DOTFILES)/termite $(HOME)/.config/termite; fi
+	mkdir -p $(TERMITE)
+	ln -fs $(DOTFILES)/termite/* $(TERMITE)/
 
 .PHONY: vim
 vim:
-	mkdir -p $(HOME)/.vim
-	ln -fs $(DOTFILES)/.vim/* $(HOME)/.vim
-	ln -fs $(DOTFILES)/.vimrc $(HOME)/.vimrc
+	mkdir -p $(VIM)
+	ln -fs $(DOTFILES)/vim/* $(VIM)/
 
 .PHONY: bash
 bash:
-	ln -fs $(DOTFILES)/.bashrc $(HOME)/.bashrc
+	ln -fs $(DOTFILES)/bash/bashrc $(HOME)/.bashrc
 
 .PHONY: clean
 clean:
-	rm $(HOME)/.config/i3/config
-	rm $(HOME)/.config/i3/i3blocks.conf
-	rm $(HOME)/.config/i3/i3blocks
-	rm $(HOME)/.config/termite
-	rm $(HOME)/.vim
-	rm $(HOME)/.vimrc
-	rm $(HOME)/.bashrc
+	$(RM) $(SWAY)
+	$(RM) $(I3BLOCKS)
+	$(RM) $(VIM)
+	$(RM) $(TERMITE)

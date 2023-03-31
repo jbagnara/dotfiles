@@ -12,8 +12,8 @@
 set $mod Mod1
 
 #set displays
-set $d1 DP-1
-set	$d2 DP-2
+set $d1 DP-2
+set	$d2 HDMI-A-1 
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -21,14 +21,15 @@ set	$d2 DP-2
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 9
+font pango:DejaVu Sans Mono Bold 9
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+set $lock swaylock --clock --indicator --screenshots --effect-scale 0.4 --effect-vignette 0.2:0.5 --effect-blur 4x2 --datestr "%a %e.%m.%Y" --timestr "%k:%M"
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- $lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -183,17 +184,17 @@ bindsym $mod+r mode "resize"
 
 #primary monitor bar
 bar {
-		output $d1
+		output *
 		tray_output none
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
 }
 
 #secondary monitor bar
-bar {
-		output $d2
-		tray_output none
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
-}
+#bar {
+#		output $d1
+#		tray_output none
+#        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+#}
 
 #Border configs
 default_border pixel 
@@ -201,7 +202,8 @@ hide_edge_borders both
 
 
 #Monitor outputs
-exec xrandr --output DisplayPort-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal --output DisplayPort-1 --mode 1366x768 --pos 0x312 --rotate normal --output HDMI-A-0 --off --output HDMI-A-1 --off --output DVI-D-0 --off
+output DP-2 pos 1920 0 res 1920x1080@144Hz
+output HDMI-A-1 pos 0 0 res 1920x1080@75Hz
 
 workspace 1 output $d1
 workspace 2 output $d2
@@ -217,24 +219,24 @@ workspace 9 output $d2
 assign [class="discord"] $ws9
 
 #Color Scheme
-set $bg     #2c2c2e
-set $fg     #9f9f9f
-set $hi     #efef8f
-set $ac     #a0afa0
-set $tx     #040404
-set $ia     #8f8f8f
-set $be     #8faf9f
-set $yw     #ccdc90
-set $gn     #88b090
-set $rd     #e89393
+#set $bg     #2c2c2e
+#set $fg     #9f9f9f
+#set $hi     #efef8f
+#set $ac     #a0afa0
+#set $tx     #040404
+#set $ia     #8f8f8f
+#set $be     #8faf9f
+#set $yw     #ccdc90
+#set $gn     #88b090
+#set $rd     #e89393
 
-client.focused              $ac        $ac         $tx
-client.unfocused            $bg        $bg         $ia
-client.focused_inactive     $bg        $bg         $ac
-client.urgent               $rd        $rd         $tx
+#client.focused              $ac        $ac         $tx
+#client.unfocused            $bg        $bg         $ia
+#client.focused_inactive     $bg        $bg         $ac
+#client.urgent               $rd        $rd         $tx
 
 #Background
-exec_always feh --bg-scale $HOME/.config/i3/bg1.png
+output * bg $HOME/.config/sway/bg1.png stretch
 
 #Transparent windows
 exec --no-startup-id compton
@@ -247,3 +249,11 @@ bindsym Print exec maim -s --format png /dev/stdout | xclip -selection clipboard
 
 #Disable mouse focus
 focus_follows_mouse no
+# start a terminal
+
+bindsym KP_MULTIPLY seat - cursor press BTN_LEFT, seat - cursor release BTN_LEFT
+
+exec_always swayidle -w \
+    timeout 6000 '$lock' \
+    before-sleep '$lock'
+
