@@ -186,7 +186,7 @@ bindsym $mod+r mode "resize"
 bar {
 		output *
 		tray_output none
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        status_command export DIR=~/.config/sway/i3blocks; i3blocks -c ${DIR}/i3blocks.conf
 }
 
 #secondary monitor bar

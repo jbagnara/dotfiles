@@ -4,11 +4,12 @@ SWAY		:= $(CONF)/sway
 TERMITE	 := $(CONF)/termite
 I3BLOCKS	:= $(SWAY)/i3blocks
 VIM			:= $(HOME)/.vim
+TMUX		:= $(CONF)/tmux
 
 RM		  := rm -rf
 
 .PHONY: all
-all: sway termite vim bash
+all: sway termite vim bash tmux
 
 .PHONY: sway
 sway: i3blocks
@@ -34,9 +35,15 @@ vim:
 bash:
 	ln -fs $(DOTFILES)/bash/bashrc $(HOME)/.bashrc
 
+.PHONY: tmux
+tmux:
+	mkdir -p $(TMUX)
+	ln -fs $(DOTFILES)/tmux/* $(TMUX)/
+
 .PHONY: clean
 clean:
 	$(RM) $(SWAY)
 	$(RM) $(I3BLOCKS)
 	$(RM) $(VIM)
 	$(RM) $(TERMITE)
+	$(RM) $(TMUX)
