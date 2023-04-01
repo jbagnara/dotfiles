@@ -1,8 +1,9 @@
 DOTFILES	:= $(shell pwd)
 CONF		:= $(HOME)/.config
 SWAY		:= $(CONF)/sway
-TERMITE	 := $(CONF)/termite
+TERMITE	    := $(CONF)/termite
 I3BLOCKS	:= $(SWAY)/i3blocks
+WAYBAR	    := $(CONF)/waybar
 VIM			:= $(HOME)/.vim
 TMUX		:= $(CONF)/tmux
 
@@ -12,9 +13,14 @@ RM		  := rm -rf
 all: sway termite vim bash tmux
 
 .PHONY: sway
-sway: i3blocks
+sway: waybar
 	mkdir -p $(SWAY)
 	ln -fs $(DOTFILES)/sway/* $(SWAY)/
+
+.PHONY: waybar
+waybar:
+	mkdir -p $(WAYBAR)
+	ln -fs $(DOTFILES)/waybar/* $(WAYBAR)/
 
 .PHONY: i3blocks
 i3blocks:
