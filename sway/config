@@ -1,18 +1,17 @@
 set $mod Mod1
 
-#set displays
-set $d1 DP-2
-set	$d2 HDMI-A-1 
-
-# Font for window titles. Will also be used by the bar unless a different font
-
+#Start tasks
 exec waybar
+exec $HOME/.config/sway/scripts/inactive-windows-transparency.py
 
 #Border configs
 default_border none
 gaps inner 3
 
-#Monitor outputs
+#set displays
+set $d1 DP-2
+set	$d2 HDMI-A-1 
+
 output DP-2 pos 1920 0 res 1920x1080@144Hz
 output HDMI-A-1 pos 0 0 res 1920x1080@75Hz
 
@@ -29,14 +28,16 @@ workspace 10 output $d2
 
 #Applications
 assign [class="discord"] $ws9
+for_window [app_id="pavucontrl"] floating enable
 
 #Background
 output * bg $HOME/.config/sway/bg1.png stretch
 
 #Transparent windows
-exec --no-startup-id compton
+exec compton
 
 #Disable mouse focus
 focus_follows_mouse no
 
+#Includes
 include $HOME/.config/sway/config.d/*
