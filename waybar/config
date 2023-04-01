@@ -1,0 +1,82 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "modules-left": ["sway/workspaces"],
+    "modules-right": ["custom/keyboard", "network#eth1", "network#eth2", "battery", "pulseaudio", "clock", "custom/quit"],
+    "clock": {
+        "format": "{:%Y-%m-%d   %H:%M:%S}",
+        "format-alt": "{:%a %b %d}",
+        "tooltip": false,
+        "interval": 1
+    },
+    "sway/workspaces": {
+        "all-outputs": false,
+        "persistent_workspaces": {
+            "1": ["DP-2"],
+            "2": ["DP-2"],
+            "3": ["DP-2"],
+            "4": ["DP-2"],
+            "5": ["DP-2"],
+            "6": ["HDMI-A-1"],
+            "7": ["HDMI-A-1"],
+            "8": ["HDMI-A-1"],
+            "9": ["HDMI-A-1"],
+            "10": ["HDMI-A-1"]
+        }
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "bat":"BAT1",
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-discharging": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network#eth1": {
+        "interface": "enp*",
+        "format": "{ifname}:",
+        "format-disconnected": "",
+        "tooltip-format-wifi": "{signalStrength}%",
+        "max-length": 200
+    },
+    "network#eth2": {
+        "interface": "enp*",
+        "format": "{ipaddr}",
+        "format-disconnected": "",
+        "tooltip-format-wifi": "{signalStrength}%",
+        "max-length": 200
+    },
+    "network#wifi": {
+        "interface": "wlp*",
+        "format": "{ifname}  {signalStrength}: {ipaddr}",
+        "format-disconnected": "",
+        "tooltip-format-wifi": "{signalStrength}%",
+        "max-length": 20
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "scroll-step": 1,
+        "on-click": "pavucontrol"
+    },
+    "custom/quit": {
+        "format": "        ",
+        "on-click": "swaynag -f 'Terminus (TTF)'  -t warning -m 'Do you really want to exit sway?' -b 'Yes, exit sway' 'swaymsg exit'"
+    }
+}

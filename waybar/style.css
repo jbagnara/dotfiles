@@ -1,0 +1,103 @@
+* {
+  font-size: 12px;
+  font-family: "Terminus (TTF)";
+}
+
+window#waybar {
+    background: rgba(1,1,1,0.9);
+}
+
+#workspaces {
+  margin: 3px 0px 3px 0px;
+  background: #1d1f21;
+  padding: 2px;
+  color: #c5c8c6;
+}
+#workspaces button.visible {
+  color: #ffffff;
+}
+
+#battery {
+  margin: 3px 0px 3px 0px;
+  background: #1d1f21;
+  padding: 2px;
+  color: #c5c8c6;
+}
+
+#custom-quit {
+  margin: 3px 3px 3px 0px;
+  padding: 2px 2px 2px 2px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-right: 2px solid #1d1f21;
+  border-left: 2px solid #1d1f21;
+  border-top: 2px solid #1d1f21;
+  border-bottom: 2px solid #1d1f21;
+  background: #F00;
+  color: #FFF;
+}
+
+#clock {
+  margin: 3px 3px 3px 3px;
+  padding: 2px 7px 2px 2px;
+  color: #FFF;
+  background: #1d1f21;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-right: 2px solid #1d1f21;
+  border-left: 2px solid #1d1f21;
+  border-top: 2px solid #1d1f21;
+  border-bottom: 2px solid #1d1f21;
+  color: #c5c8c6;
+}
+
+#custom-keyboard {
+  background: #1d1f21;
+  color: #c5c8c6;
+  padding: 2px 2px 2px 7px;
+  margin: 3px 0px 3px 3px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+#pulseaudio {
+  margin: 3px 0px 3px 3px;
+  padding: 2px 7px 2px 2px;
+  background: #1d1f21;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-right: 2px solid #1d1f21;
+  border-left: 2px solid #1d1f21;
+  border-top: 2px solid #1d1f21;
+  border-bottom: 2px solid #1d1f21;
+  color: #c5c8c6;
+}
+
+#network.eth1 {
+  background: #1d1f21;
+  color: #c5c8c6;
+  margin: 3px 0px 3px 0px;
+  padding: 2px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-left: 2px solid #1d1f21;
+  border-top: 2px solid #1d1f21;
+  border-bottom: 2px solid #1d1f21;
+}
+#network.eth2 {
+  background: #1d1f21;
+  color: #00ff00;
+  margin: 3px 0px 3px 0px;
+  padding: 2px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-right: 2px solid #1d1f21;
+  border-top: 2px solid #1d1f21;
+  border-bottom: 2px solid #1d1f21;
+}
