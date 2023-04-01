@@ -143,7 +143,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Shift+l exec systemctl suspend
 
 #Screenshot
-bindsym Print exec maim -s --format png /dev/stdout | xclip -selection clipboard -t image/png -i
+bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
 bindsym KP_MULTIPLY seat - cursor press BTN_LEFT, seat - cursor release BTN_LEFT
 

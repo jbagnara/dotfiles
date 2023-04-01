@@ -13,9 +13,11 @@
   - i3blocks
   - termite
   - feh
-  - maim
+  - slurp
+  - grim
   - xrandr
   - compton
   - lm_sensors
   - swaylock
   - swayidle
+  - wl-clipboard
