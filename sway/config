@@ -1,14 +1,14 @@
 set $mod Mod1
 
-#Start tasks
+# Start tasks
 exec waybar
 exec $HOME/.config/sway/scripts/inactive-windows-transparency.py
 
-#Border configs
+# Border configs
 default_border none
 gaps inner 3
 
-#set displays
+# Set displays
 set $d1 DP-2
 set	$d2 HDMI-A-1 
 
@@ -26,18 +26,18 @@ workspace 8 output $d2
 workspace 9 output $d2
 workspace 10 output $d2
 
-#Applications
+# Applications
 assign [class="discord"] $ws9
 for_window [app_id="pavucontrl"] floating enable
 
-#Background
+# Background
 output * bg $HOME/.config/sway/bg1.png stretch
 
-#Transparent windows
+# Transparent windows
 exec compton
 
-#Disable mouse focus
+# Disable mouse focus
 focus_follows_mouse no
 
-#Includes
+# Includes
 include $HOME/.config/sway/config.d/*

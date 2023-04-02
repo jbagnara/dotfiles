@@ -5,7 +5,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+# Drag floating windows
 floating_modifier $mod
 
 # start a terminal
@@ -23,19 +23,17 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-#bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -51,9 +49,9 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
+#bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -62,13 +60,12 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+n focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+m focus child
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+# define workspaces
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -106,44 +103,62 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "swaynag  -m 'Do you really want to exit sway?' -b 'Yes, exit sway' 'swaymsg exit'"
 
-# resize window (you can also use the mouse for that)
+# Resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym j resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
+# Suspend device
+bindsym $mod+Control+l exec systemctl suspend
 
-#Suspend device
-bindsym $mod+Shift+l exec systemctl suspend
-
-#Screenshot
+# Screenshot
 bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
+# Mouse keys
 bindsym KP_MULTIPLY seat - cursor press BTN_LEFT, seat - cursor release BTN_LEFT
+bindsym KP_Begin seat - cursor press BTN_LEFT, seat - cursor release BTN_LEFT
 
+bindsym KP_UP seat - cursor move 0 -10
+bindsym KP_DOWN seat - cursor move 0 10
+bindsym KP_LEFT seat - cursor move -10 0
+bindsym KP_RIGHT seat - cursor move 10 0
+bindsym KP_Home seat - cursor move -10 -10
+bindsym KP_Prior seat - cursor move 10 -10
+bindsym KP_End seat - cursor move -10 10
+bindsym KP_Next seat - cursor move 10 10
+
+bindsym Shift+KP_UP seat - cursor move 0 -50
+bindsym Shift+KP_DOWN seat - cursor move 0 50
+bindsym Shift+KP_LEFT seat - cursor move -50 0
+bindsym Shift+KP_RIGHT seat - cursor move 50 0
+bindsym Shift+KP_Home seat - cursor move -50 -50
+bindsym Shift+KP_Prior seat - cursor move 50 -50
+bindsym Shift+KP_End seat - cursor move -50 50
+bindsym Shift+KP_Next seat - cursor move 50 50
