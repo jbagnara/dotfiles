@@ -4,6 +4,8 @@
     "modules-left": ["sway/workspaces"],
     "modules-right": [
         "custom/keyboard", 
+        "network#wifi1", 
+        "network#wifi2", 
         "network#eth1", 
         "network#eth2", 
         "custom/cpu_temp1", 
@@ -81,7 +83,21 @@
     "network#eth2": {
         "interface": "enp*",
         "format": "{ipaddr}",
-        "format-disconnected": "",
+        "format-disconnected": "none",
+        "tooltip-format-wifi": "{signalStrength}%",
+        "max-length": 200
+    },
+    "network#wifi1": {
+        "interface": "wlp*",
+        "format": "{ifname}:",
+        "format-disconnected": "{ifname}:",
+        "tooltip-format-wifi": "{signalStrength}%",
+        "max-length": 200
+    },
+    "network#wifi2": {
+        "interface": "wlp*",
+        "format": "{ipaddr}",
+        "format-disconnected": "none",
         "tooltip-format-wifi": "{signalStrength}%",
         "max-length": 200
     },
