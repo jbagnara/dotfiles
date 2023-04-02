@@ -10,7 +10,6 @@
         "custom/cpu_temp2", 
         "custom/gpu_temp1", 
         "custom/gpu_temp2", 
-        "battery", 
         "pulseaudio", 
         "clock", 
         "custom/quit"
