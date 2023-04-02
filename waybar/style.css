@@ -17,6 +17,56 @@ window#waybar {
   color: #ffffff;
 }
 
+#custom-cpu_temp1 {
+  color: #ffffff;
+  background: #1d1f21;
+  color: #c5c8c6;
+  margin: 3px 0px 3px 3px;
+  padding: 2px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-left: 2px solid #1d1f21;
+  border-top: 2px solid #1d1f21;
+  border-bottom: 2px solid #1d1f21;
+}
+
+#custom-cpu_temp2 {
+  color: #0e9fe8;
+  background: #1d1f21;
+  margin: 3px 0px 3px 0px;
+  padding: 2px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-right: 2px solid #1d1f21;
+  border-top: 2px solid #1d1f21;
+  border-bottom: 2px solid #1d1f21;
+}
+
+#custom-gpu_temp1 {
+  color: #ffffff;
+  background: #1d1f21;
+  color: #c5c8c6;
+  margin: 3px 0px 3px 3px;
+  padding: 2px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-left: 2px solid #1d1f21;
+  border-top: 2px solid #1d1f21;
+  border-bottom: 2px solid #1d1f21;
+}
+
+#custom-gpu_temp2 {
+  color: #ff7377;
+  background: #1d1f21;
+  margin: 3px 0px 3px 0px;
+  padding: 2px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-right: 2px solid #1d1f21;
+  border-top: 2px solid #1d1f21;
+  border-bottom: 2px solid #1d1f21;
+}
+
 #battery {
   margin: 3px 0px 3px 0px;
   background: #1d1f21;
@@ -82,7 +132,7 @@ window#waybar {
 #network.eth1 {
   background: #1d1f21;
   color: #c5c8c6;
-  margin: 3px 0px 3px 0px;
+  margin: 3px 0px 3px 3px;
   padding: 2px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;

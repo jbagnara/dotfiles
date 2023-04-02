@@ -2,7 +2,19 @@
     "layer": "top",
     "position": "bottom",
     "modules-left": ["sway/workspaces"],
-    "modules-right": ["custom/keyboard", "network#eth1", "network#eth2", "battery", "pulseaudio", "clock", "custom/quit"],
+    "modules-right": [
+        "custom/keyboard", 
+        "network#eth1", 
+        "network#eth2", 
+        "custom/cpu_temp1", 
+        "custom/cpu_temp2", 
+        "custom/gpu_temp1", 
+        "custom/gpu_temp2", 
+        "battery", 
+        "pulseaudio", 
+        "clock", 
+        "custom/quit"
+    ],
     "clock": {
         "format": "{:%Y-%m-%d   %H:%M:%S}",
         "format-alt": "{:%a %b %d}",
@@ -23,6 +35,28 @@
             "9": ["HDMI-A-1"],
             "10": ["HDMI-A-1"]
         }
+    },
+    "custom/cpu_temp1": {
+        "format": "cpu: ",
+        "interval": 1
+    },
+    "custom/cpu_temp2": {
+        "format": "{}",
+        "interval": 1,
+        "exec": "SENSOR_CHIP=coretemp-isa-0000 $HOME/.config/waybar/scripts/temperature.sh",
+        "max-length": 200
+    },
+    "custom/gpu_temp1": {
+        "format": "gpu: ",
+        "interval": 1
+    },
+    "custom/gpu_temp2": {
+        "format": "{}",
+        "interval": 1,
+        "exec": "SENSOR_CHIP=amdgpu-pci-0200 $HOME/.config/waybar/scripts/temperature.sh",
+        "max-length": 200
+    },
+    "custom/temperatures": {
     },
     "battery": {
         "states": {
