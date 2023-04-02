@@ -9,11 +9,15 @@
 
 - Run `make clean` to remove created sym links in home directory
 
-### i3 uses the following dependencies:
+### uses the following dependencies:
   - i3blocks
   - termite
   - feh
-  - maim
+  - slurp
+  - grim
   - xrandr
   - compton
   - lm_sensors
+  - swaylock
+  - swayidle
+  - wl-clipboard
