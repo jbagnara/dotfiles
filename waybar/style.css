@@ -1,134 +1,128 @@
 * {
-  font-size: 12px;
-  font-family: "Terminus (TTF)";
+  border: none;
+  font-family: Iosevka Nerd Font, sans-serif;
+  font-size: 13px;
 }
 
 window#waybar {
-    background: rgba(1,1,1,0.9);
+  /* background-color: rgba(18, 21, 29, 0.98); */
+  background-color: #12151d;
+  /* background-color: rgba(0, 0, 0, 0); */
+  border-bottom: 3px solid #1e222a;
+  color: #abb2bf;
+  transition-property: background-color;
+  transition-duration: .5s;
 }
 
-#workspaces {
-  margin: 3px 0px 3px 0px;
-  padding: 2px;
-  color: #c5c8c6;
-}
-#workspaces button.visible {
-  color: #ffffff;
+window#waybar.hidden {
+  opacity: 0.2;
 }
 
-#custom-keyboard,
-#network.wifi1,
-#network.wifi2,
-#network.eth1,
-#network.eth2,
-#custom-cpu_temp1, 
-#custom-cpu_temp2,
-#custom-gpu_temp1,
-#custom-gpu_temp2,
+#workspaces,
+#mode,
+#cpu,
+#memory,
+#custom-cpu_temp,
+#custom-gpu_temp,
+#custom-media,
+#custom-fans,
+#idle_inhibitor,
+#language,
 #pulseaudio,
-#clock {
-  color: #c5c8c6;
-  background: #1d1f21;
-  margin: 3px 3px 3px 3px;
-  padding: 2px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-right: 2px solid #1d1f21;
-  border-left: 2px solid #1d1f21;
-  border-top: 2px solid #1d1f21;
-  border-bottom: 2px solid #1d1f21;
+#backlight,
+#battery,
+#network,
+#tray {
+  background-color: #1e222a;
+  padding: 0 10px;
+  margin: 2px 0px 5px 0px;
+  border: 3px solid rgba(0, 0, 0, 0);
+  border-radius: 90px;
+  background-clip: padding-box;
 }
 
-#custom-cpu_temp1 {
-  margin: 3px 0px 3px 3px;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  border-right: 0px solid #1d1f21;
+#workspaces button {
+  padding: 0 5px;
+  min-width: 20px;
+  color: #61afef;
 }
 
-#custom-cpu_temp2 {
-  color: #0e9fe8;
-  margin: 3px 0px 3px 0px;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  border-left: 0px solid #1d1f21;
+#workspaces button:hover {
+  background-color: rgba(0, 0, 0, 0.2)
 }
 
-#custom-gpu_temp1 {
-  margin: 3px 0px 3px 3px;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  border-right: 0px solid #1d1f21;
+#workspaces button.focused {
+  color: #c678dd;
 }
 
-#custom-gpu_temp2 {
-  color: #ff7377;
-  margin: 3px 0px 3px 0px;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  border-left: 0px solid #1d1f21;
+#workspaces button.urgent {
+  color: #e06c75;
 }
 
-#battery {
-  color: #c5c8c6;
+#custom-cpu_temp {
+  color: #61afef;
 }
 
-#custom-quit {
-  margin: 3px 3px 3px 0px;
-  padding: 2px 2px 12px 2px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-right: 2px solid #1d1f21;
-  border-left: 2px solid #1d1f21;
-  border-top: 2px solid #1d1f21;
-  border-bottom: 2px solid #1d1f21;
-  background-image: url("power.png");
-  color: transparent;
+#custom-gpu_temp {
+  color: #73ff8a;
+}
+
+#memory {
+  color: #c678dd;
+}
+
+#temperature {
+  color: #d19a66;
+}
+
+#temperature.critical {
+  background-color: #e06c75;
+  color: #1e222a;
+}
+
+#custom-media {
+  background-color: #c678dd;
+  color: #1e222a;
 }
 
 #clock {
+  color: #61afef;
 }
 
-#custom-keyboard {
+#idle_inhibitor {
+  color: #abb2bf;
+}
+
+#idle_inhibitor.activated {
+  background-color: #abb2bf;
+  color: #1e222a;
+}
+
+#language {
+  color: #56b6c2;
 }
 
 #pulseaudio {
+  color: #d19a66;
 }
 
-#network.eth1 {
-  margin: 3px 0px 3px 3px;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  border-right: 0px solid #1d1f21;
-}
-#network.eth2 {
-  color: #00ff00;
-  margin: 3px 0px 3px 0px;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  border-left: 0px solid #1d1f21;
-}
-#network.eth2.disconnected {
-  color: #ff0000;
+#pulseaudio.muted {
+  background-color: #e06c75;
+  color: #1e222a;
 }
 
-#network.wifi1 {
-  margin: 3px 0px 3px 3px;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  border-right: 0px solid #1d1f21;
+@keyframes blink {
+    to {
+        background-color: #1e222a;
+        color: #e06c75;
+    }
 }
-#network.wifi2 {
-  color: #00ff00;
-  margin: 3px 0px 3px 0px;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  border-left: 0px solid #1d1f21;
+
+#network {
+    color: #c678dd
 }
-#network.wifi2.disconnected {
-  color: #ff0000;
+
+#network.disconnected {
+    background-color: #e06c75;
+    color: #1e222a;
 }
