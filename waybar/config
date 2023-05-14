@@ -1,27 +1,20 @@
 {
-    "layer": "top",
     "position": "bottom",
-    "modules-left": ["sway/workspaces"],
+    "height": 37, // Waybar height (to be removed for auto height)
+    "modules-left": ["sway/workspaces", "custom/media"],
+    "modules-center": ["clock"],
     "modules-right": [
-        "custom/keyboard", 
-        "network#wifi1", 
-        "network#wifi2", 
-        "network#eth1", 
-        "network#eth2", 
-        "custom/cpu_temp1", 
-        "custom/cpu_temp2", 
-        "custom/gpu_temp1", 
-        "custom/gpu_temp2", 
+        "idle_inhibitor", 
+        "custom/cpu_temp", 
+        "custom/gpu_temp", 
+        "sway/language", 
         "pulseaudio", 
-        "clock", 
-        "custom/quit"
+        "battery", 
+        "network", 
+        "tray"
     ],
-    "clock": {
-        "format": "{:%Y-%m-%d   %H:%M:%S}",
-        "format-alt": "{:%a %b %d}",
-        "tooltip": false,
-        "interval": 1
-    },
+
+    // Modules configuration
     "sway/workspaces": {
         "all-outputs": false,
         "persistent_workspaces": {
@@ -37,95 +30,61 @@
             "10": ["HDMI-A-1"]
         }
     },
-    "custom/cpu_temp1": {
-        "format": "cpu: ",
-        "interval": 1
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
     },
-    "custom/cpu_temp2": {
-        "format": "{}",
+    "sway/language": {
+        "format": "{short} ⠀⠀"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " "
+        }
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+	"format": "{:%H:%M}  ",
+	"format-alt": "{:%A, %B %d, %Y}  "
+    },
+    "custom/cpu_temp": {
+        "format": "cpu: {}",
         "interval": 1,
         "exec": "SENSOR_CHIP=coretemp-isa-0000 $HOME/.config/waybar/scripts/temperature.sh",
         "max-length": 200
     },
-    "custom/gpu_temp1": {
-        "format": "gpu: ",
-        "interval": 1
-    },
-    "custom/gpu_temp2": {
-        "format": "{}",
+    "custom/gpu_temp": {
+        "format": "gpu: {}",
         "interval": 1,
         "exec": "SENSOR_CHIP=amdgpu-pci-0200 $HOME/.config/waybar/scripts/temperature.sh",
         "max-length": 200
     },
-    "custom/temperatures": {
-    },
-    "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "bat":"BAT1",
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-discharging": " {capacity}%",
-        "format-alt": "{icon} {time}",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "network#eth1": {
-        "interface": "enp*",
-        "format": "{ifname}:",
-        "format-disconnected": "",
-        "tooltip-format-wifi": "{signalStrength}%",
-        "max-length": 200
-    },
-    "network#eth2": {
-        "interface": "enp*",
-        "format": "{ipaddr}",
-        "format-disconnected": "none",
-        "tooltip-format-wifi": "{signalStrength}%",
-        "max-length": 200
-    },
-    "network#wifi1": {
-        "interface": "wlp*",
-        "format": "{ifname}:",
-        "format-disconnected": "{ifname}:",
-        "tooltip-format-wifi": "{signalStrength}%",
-        "max-length": 200
-    },
-    "network#wifi2": {
-        "interface": "wlp*",
-        "format": "{ipaddr}",
-        "format-disconnected": "none",
-        "tooltip-format-wifi": "{signalStrength}%",
-        "max-length": 200
-    },
-    "network#wifi": {
-        "interface": "wlp*",
-        "format": "{ifname}  {signalStrength}: {ipaddr}",
-        "format-disconnected": "",
-        "tooltip-format-wifi": "{signalStrength}%",
-        "max-length": 20
+    "network": {
+        "format-wifi": "{ifname}: {ipaddr}/{cidr}",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+        "format-linked": "{ifname} (No IP)  ",
+        "format-disconnected": "no network ",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "{essid} {signalStrength}%"
     },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}%",
-        "format-muted": "",
+        "format": "{icon} {volume}% {format_source}",
+        "format-muted": "X  {format_source}",
+        "format-source": " ",
+        "format-source-muted": " ",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", ""]
+            "headphone": " ",
+            "phone": " ",
+            "portable": " ",
+            "default": [" ", " ", " "]
         },
-        "scroll-step": 1,
-        "on-click": "pavucontrol"
-    },
-    "custom/quit": {
-        "format": "        ",
-        "on-click": "swaynag -f 'Terminus (TTF)'  -t warning -m 'Do you really want to exit sway?' -b 'Yes, exit sway' 'swaymsg exit'"
+        "tooltip-format": "{desc}, {volume}%",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-click-middle": "pavucontrol"
     }
 }

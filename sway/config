@@ -2,10 +2,10 @@ set $mod Mod1
 
 # Start tasks
 exec waybar
-exec $HOME/.config/sway/scripts/inactive-windows-transparency.py
+#exec $HOME/.config/sway/scripts/inactive-windows-transparency.py
 
 # Border configs
-default_border none
+default_border pixel 4
 gaps inner 3
 
 # Set displays
@@ -33,7 +33,7 @@ for_window [app_id="pavucontrol"] nofocus
 for_window [app_id="pavucontrol"] resize set 600 500
 
 # Background
-output * bg $HOME/.config/sway/bg1.png stretch
+output * bg $HOME/.config/sway/bg3.png stretch
 
 # Transparent windows
 exec compton
