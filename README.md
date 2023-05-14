@@ -1,3 +1,6 @@
+![image](https://github.com/jbagnara/dotfiles/assets/37915886/e8fef85a-ce96-41cb-a13d-41c16f5dffef)
+
+
 ### Directions:
 - Clone the repo:
 
