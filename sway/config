@@ -2,7 +2,7 @@ set $mod Mod1
 
 # Start tasks
 exec waybar
-#exec $HOME/.config/sway/scripts/inactive-windows-transparency.py
+exec $HOME/.config/sway/scripts/inactive-windows-transparency.py -o 0.7
 
 # Border configs
 default_border pixel 4
