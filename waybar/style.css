@@ -1,6 +1,6 @@
 * {
   border: none;
-  font-family: Iosevka Nerd Font, sans-serif;
+  font-family: Noto Sans, sans-serif;
   font-size: 13px;
 }
 
@@ -17,6 +17,11 @@ window#waybar {
 window#waybar.hidden {
   opacity: 0.2;
 }
+
+/* 
+    Apply padding if emojis are rendered too tall:
+    padding: 4px 10px 0px 10px;
+*/
 
 #workspaces,
 #mode,

@@ -6,7 +6,6 @@
     "modules-right": [
         "idle_inhibitor", 
         "custom/cpu_temp", 
-        "custom/gpu_temp", 
         "sway/language", 
         "pulseaudio", 
         "battery", 
@@ -18,29 +17,29 @@
     "sway/workspaces": {
         "all-outputs": false,
         "persistent_workspaces": {
-            "1": ["DP-2"],
-            "2": ["DP-2"],
-            "3": ["DP-2"],
-            "4": ["DP-2"],
-            "5": ["DP-2"],
-            "6": ["HDMI-A-1"],
-            "7": ["HDMI-A-1"],
-            "8": ["HDMI-A-1"],
-            "9": ["HDMI-A-1"],
-            "10": ["HDMI-A-1"]
+            "1": ["eDP-1"],
+            "2": ["eDP-1"],
+            "3": ["eDP-1"],
+            "4": ["eDP-1"],
+            "5": ["eDP-1"],
+            "6": ["eDP-1"],
+            "7": ["eDP-1"],
+            "8": ["eDP-1"],
+            "9": ["eDP-1"],
+            "10": ["eDP-1"],
         }
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
     "sway/language": {
-        "format": "{short} ⠀⠀"
+        "format": "{short} ⌨️"
     },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": " ",
-            "deactivated": " "
+            "activated": "😼",
+            "deactivated": "🐱"
         }
     },
     "tray": {
@@ -48,8 +47,8 @@
     },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-	"format": "{:%H:%M}  ",
-	"format-alt": "{:%A, %B %d, %Y}  "
+	"format": "{:%H:%M} 🕛",
+	"format-alt": "{:%A, %B %d, %Y} 🗓️"
     },
     "custom/cpu_temp": {
         "format": "cpu: {}",
@@ -64,20 +63,21 @@
         "max-length": 200
     },
     "network": {
-        "format-wifi": "{ifname}: {ipaddr}/{cidr}",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+        "format-wifi": "📡{ipaddr}/{cidr}",
+        "format-ethernet": "🖧 {ipaddr}/{cidr}",
         "format-linked": "{ifname} (No IP)  ",
         "format-disconnected": "no network ",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "tooltip-format": "{essid} {signalStrength}%"
     },
     "pulseaudio": {
-        "format": "{icon} {volume}% {format_source}",
-        "format-muted": "X  {format_source}",
-        "format-source": " ",
-        "format-source-muted": " ",
+        "format": "{icon} {volume:3}% {format_source}",
+        "format-muted": "🔈 0% {format_source}",
+        "format-source": "🎙️",
+        "format-source-muted": "X",
         "format-icons": {
-            "headphone": " ",
+            "speaker": "🔊",
+            "headphones": "🎧",
             "phone": " ",
             "portable": " ",
             "default": [" ", " ", " "]
@@ -86,5 +86,16 @@
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
         "on-click-middle": "pavucontrol"
+    },
+    "battery": {
+        "states": {
+                "warning": 30,
+                "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "🔌{capacity}%",
+        "format-plugged": "{capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["🪫", "🔋", "!"]
     }
 }
