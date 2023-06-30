@@ -6,11 +6,12 @@ I3BLOCKS	:= $(SWAY)/i3blocks
 WAYBAR	    := $(CONF)/waybar
 VIM			:= $(HOME)/.vim
 TMUX		:= $(CONF)/tmux
+FUZZEL		:= $(CONF)/fuzzel
 
 RM		  := rm -rf
 
 .PHONY: all
-all: sway termite vim bash tmux
+all: sway termite vim bash tmux fuzzel
 
 .PHONY: sway
 sway: waybar
@@ -46,6 +47,11 @@ tmux:
 	mkdir -p $(TMUX)
 	ln -fs $(DOTFILES)/tmux/* $(TMUX)/
 
+.PHONY: fuzzel
+fuzzel:
+	mkdir -p $(FUZZEL)
+	ln -fs $(DOTFILES)/fuzzel/* $(FUZZEL)/
+
 .PHONY: clean
 clean:
 	$(RM) $(SWAY)
@@ -53,3 +59,4 @@ clean:
 	$(RM) $(VIM)
 	$(RM) $(TERMITE)
 	$(RM) $(TMUX)
+	$(RM) $(FUZZEL)
