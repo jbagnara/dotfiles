@@ -36,7 +36,9 @@ sudo pacman -S \
     pavucontorl \
     fuzzle \
     wl-clipboard \
-    noto-fonts
+    noto-fonts \
+    nodejs \
+    clangd
 
 pip3 install \
     i3ipc
