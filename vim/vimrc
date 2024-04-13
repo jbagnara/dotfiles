@@ -1,4 +1,66 @@
+set rtp+=~/.fzf
+set rtp+=~/.vim/bundle/fzf.vim
+
 syntax on
 colorscheme elflord
 set number
 set ts=4 sts=-1 sw=0 expandtab
+set clipboard^=unnamed
+let mapleader = " "
+
+" Switch to tab n
+nnoremap <leader>n :tabnew<cr>
+for i in range(0,9)
+    execute "nnoremap \<leader>" . i . " :tabn " . (i+1) . "\<cr>"
+endfor
+
+nnoremap <leader>V :sp<cr>
+nnoremap <leader>H :vsp<cr>
+
+inoremap <Nul> <C-n>
+
+nnoremap <leader>h <C-w>h<cr>
+nnoremap <leader>j <C-w>j<cr>
+nnoremap <leader>k <C-w>k<cr>
+nnoremap <leader>l <C-w>l<cr>
+
+" Numbered tabs
+    fu! MyTabLabel(n)
+    let buflist = tabpagebuflist(a:n)
+    let winnr = tabpagewinnr(a:n)
+    let string = fnamemodify(bufname(buflist[winnr - 1]), ':t')
+    return empty(string) ? '[unnamed]' : string
+    endfu
+
+    fu! MyTabLine()
+    let s = ''
+
+    " select the highlighting
+    for i in range(tabpagenr('$'))
+        if i + 1 == tabpagenr()
+            let s .= '%#TabLineSel#'
+        else  
+            let s .= '%#TabLine#'
+        endif
+
+        let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+
+        if i+1 < tabpagenr('$')
+            let s .= ' |'
+        endif
+    endfor
+    return s
+    endfu
+    set tabline=%!MyTabLine()
+
+" fzf fuzzy finder
+    nnoremap <leader>f :Files<cr>
+    nnoremap <leader>g :GFiles<cr>
+    nnoremap <leader>ag :Ag<cr>
+
+    command! -bang -nargs=* GGrep
+        \ call fzf#vim#grep(
+        \   'git grep --line-number '.shellescape(<q-args>), 1,
+        \   <bang>0 ? fzf#vim$with_preview({'options': '--no-hscroll'},'up:60%')
+        \           : fzf#vim#with_preview({'options': '--no-hscroll'},'right:50%'),
+        \   <bang>0)
