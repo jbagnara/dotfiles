@@ -29,3 +29,5 @@ alias pbpaste='xsel --clipboard --output'
 alias discord=webcord
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+bind '"\C-h": "~/"'
