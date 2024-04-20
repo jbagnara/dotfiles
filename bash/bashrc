@@ -30,4 +30,4 @@ alias discord=webcord
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-bind '"\C-h": "~/"'
+bind '"\C-b": "~/"'
