@@ -67,22 +67,44 @@ nnoremap <leader>l <C-w>l<cr>
         \           : fzf#vim#with_preview({'options': '--no-hscroll'},'right:50%'),
         \   <bang>0)
 
-" COC
-    inoremap <silent><expr> <TAB>
-          \ coc#pum#visible() ? coc#pum#next(1) :
-          \ CheckBackspace() ? "\<Tab>" :
-          \ coc#refresh()
-    inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+packadd lsp
 
-    " Make <CR> to accept selected completion item or notify coc.nvim to format
-    " <C-g>u breaks current undo, please make your own choice
-    inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                                  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+nnoremap <silent> K :LspHover<CR>
+nmap <leader>r :LspRename<CR>
+nmap <leader>f :LspFormat<CR>
+nmap gr :LspShowReferences<CR>
+nmap gd :LspGotoDefinition<CR>
+nmap [G :LspDiag first<CR>
+nmap [g :LspDiag prev<CR>
+nmap ]g :LspDiag next<CR>
+nmap ]G :LspDiag last<CR>
+nmap <Space>d :LspDiag show<CR>
+nmap <Space>s :LspDocumentSymbol<CR>
 
-    function! CheckBackspace() abort
-      let col = col('.') - 1
-      return !col || getline('.')[col - 1]  =~# '\s'
-    endfunction
+" Enable TAB for completion
+inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 
-    nmap <leader>d :call CocAction('jumpDefinition', 'tab drop')<cr>
-    nmap <leader>rn <Plug>(coc-rename)
+let pylsp_config ={
+\    "pylsp": {
+\        "plugins": {
+\            "pycodestyle": { "enabled": v:false},
+\            "autopep8": { "enabled": v:false},
+\            "rope_completion": { "enabled": v:true},
+\            "ruff": {
+\                "enabled": v:true,
+\                 "executable": "ruff",
+\                 "format": ["I"],
+\                 "targetVersion": "py310",
+\                 "perFileIgnores": {"__init__.py": "F401"},
+\            },
+\        }
+\    }
+\}
+
+call LspAddServer([#{name: 'pylsp',
+                 \   filetype: 'python',
+                 \   path: 'pylsp',
+                 \   args: [],
+                 \   workspaceConfig: pylsp_config
+                 \ }])
