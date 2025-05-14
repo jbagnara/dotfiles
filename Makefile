@@ -7,6 +7,7 @@ WAYBAR	    := $(CONF)/waybar
 VIM			:= $(HOME)/.vim
 TMUX		:= $(CONF)/tmux
 FUZZEL		:= $(CONF)/fuzzel
+QUTEBROWSER	:= $(CONF)/qutebrowser
 
 RM		  := rm -rf
 
@@ -52,6 +53,11 @@ fuzzel:
 	mkdir -p $(FUZZEL)
 	ln -fs $(DOTFILES)/fuzzel/* $(FUZZEL)/
 
+.PHONY: qutebrowser
+qutebrowser:
+	mkdir -p $(QUTEBROWSER)
+	ln -fs $(DOTFILES)/qutebrowser/* $(QUTEBROWSER)/
+
 .PHONY: clean
 clean:
 	$(RM) $(SWAY)
@@ -60,3 +66,4 @@ clean:
 	$(RM) $(TERMITE)
 	$(RM) $(TMUX)
 	$(RM) $(FUZZEL)
+	$(RM) $(QUTEBROWSER)
