@@ -1,4 +1,7 @@
-# From https://github.com/The-Compiler/dotfiles/blob/871839f20ef87af1b997266ede1daf25eff043ac/qutebrowser/gruvbox.py
+from pathlib import Path
+DIR = Path(__file__).parent
+
+# Modified From https://github.com/The-Compiler/dotfiles/blob/871839f20ef87af1b997266ede1daf25eff043ac/qutebrowser/gruvbox.py
 # gruvbox dark hard qutebrowser theme by Florian Bruhin <me@the-compiler.org>
 #
 # Originally based on:
@@ -304,13 +307,13 @@ c.colors.tabs.selected.even.fg = base05
 # Background color of selected even tabs.
 c.colors.tabs.selected.even.bg = base02
 
-config.set("content.user_stylesheets", "gruvbox.css")
+config.set("content.user_stylesheets", [str(DIR / "gruvbox.css")])
 
 c.colors.webpage.preferred_color_scheme = 'dark'
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.algorithm = "lightness-cielab"
 c.colors.webpage.darkmode.threshold.foreground = 150
 c.colors.webpage.darkmode.threshold.background = 100
-c.colors.webpage.darkmode.policy.images = 'always'
+c.colors.webpage.darkmode.policy.images = 'never'
 
 config.set('colors.webpage.bg', '#111111')
