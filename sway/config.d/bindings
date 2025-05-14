@@ -144,6 +144,7 @@ bindsym Print exec grim -g "$(slurp)" - | wl-copy
 # Mouse keys
 bindsym KP_MULTIPLY seat - cursor press BTN_LEFT, seat - cursor release BTN_LEFT
 bindsym KP_Begin seat - cursor press BTN_LEFT, seat - cursor release BTN_LEFT
+bindsym Shift+KP_Begin seat - cursor press BTN_RIGHT, seat - cursor release BTN_RIGHT
 
 bindsym KP_UP seat - cursor move 0 -10
 bindsym KP_DOWN seat - cursor move 0 10

@@ -53,7 +53,7 @@
     "custom/cpu_temp": {
         "format": "cpu: {}",
         "interval": 1,
-        "exec": "SENSOR_CHIP=coretemp-isa-0000 $HOME/.config/waybar/scripts/temperature.sh",
+        "exec": "SENSOR_CHIP=k10temp-pci-00c3 $HOME/.config/waybar/scripts/temperature.sh",
         "max-length": 200
     },
     "custom/gpu_temp": {

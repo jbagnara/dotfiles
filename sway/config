@@ -4,17 +4,18 @@ font pango:Noto Sans 11
 
 # Start tasks
 exec waybar
-exec $HOME/.config/sway/scripts/inactive-windows-transparency.py -o 0.7
+#exec $HOME/.config/sway/scripts/inactive-windows-transparency.py -o 0.7
 
 # Border configs
 default_border pixel 4
 gaps inner 3
 
 # Set displays
-set $d1 DP-2
+#set $d1 DP-1
+set $d1 DP-3
 set $d2 HDMI-A-1
-output DP-2 pos 1920 0 res 1920x1080@144Hz
-output HDMI-A-1 pos 0 0 res 1920x1080@75Hz
+output DP-3 pos 0 0 res 1920x1080@144Hz
+output HDMI-A-1 pos 1920 0 res 1920x1080@75Hz
 
 # Laptop
 # set $d1 eDP-1
@@ -46,3 +47,5 @@ focus_follows_mouse no
 
 # Includes
 include $HOME/.config/sway/config.d/*
+exec /usr/lib/xdg-desktop-portal-wlr
+exec /usr/lib/xdg-desktop-portal -r

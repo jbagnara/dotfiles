@@ -31,3 +31,17 @@ alias discord=webcord
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 bind '"\C-b": "~/"'
+
+hex () { python3 -c "print(hex($1))"; }
+bin () { python3 -c "print(bin($1))"; }
+int () { python3 -c "print(int($1))"; }
+
+#export QT_AUTO_SCREEN_SCALE_FACTOR=1
+#export QT_QPA_PLATFORM=wayland
+#export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export GDK_BACKEND=wayland
+export _JAVA_AWT_WM_NONREPARENTING=1
+export MOZ_ENABLE_WAYLAND=1
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_DESKTOP=sway
