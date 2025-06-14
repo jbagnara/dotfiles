@@ -1,19 +1,16 @@
-set rtp+=~/.fzf
-set rtp+=~/.vim/bundle/fzf.vim
+if !has('nvim')
+    set rtp+=~/.fzf
+    set rtp+=~/.vim/bundle/fzf.vim
+    colorscheme desert
+endif
 
 syntax on
-colorscheme desert
 set number
 set ts=4 sts=-1 sw=0 expandtab
 set clipboard^=unnamed
 let mapleader = " "
 
-" Switch to tab n
-nnoremap <leader>n :tabnew<cr>
-for i in range(0,9)
-    execute "nnoremap \<leader>" . i . " :tabn " . (i+1) . "\<cr>"
-endfor
-
+" Shared bindings
 nnoremap <leader>V :sp<cr>
 nnoremap <leader>H :vsp<cr>
 
@@ -23,6 +20,12 @@ nnoremap <leader>h <C-w>h<cr>
 nnoremap <leader>j <C-w>j<cr>
 nnoremap <leader>k <C-w>k<cr>
 nnoremap <leader>l <C-w>l<cr>
+
+" Switch to tab n
+nnoremap <leader>n :tabnew<cr>
+for i in range(0,9)
+    execute "nnoremap \<leader>" . i . " :tabn " . (i+1) . "\<cr>"
+endfor
 
 " Numbered tabs
     fu! MyTabLabel(n)
@@ -55,6 +58,7 @@ nnoremap <leader>l <C-w>l<cr>
 
     set tabline=%!MyTabLine()
 
+if !has('nvim')
 " fzf fuzzy finder
     nnoremap <leader>f :Files<cr>
     nnoremap <leader>g :GFiles<cr>
@@ -66,4 +70,4 @@ nnoremap <leader>l <C-w>l<cr>
         \   <bang>0 ? fzf#vim#with_preview({'options': '--no-hscroll'},'up:60%')
         \           : fzf#vim#with_preview({'options': '--no-hscroll'},'right:50%'),
         \   <bang>0)
-
+endif
