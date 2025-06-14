@@ -5,6 +5,7 @@ TERMITE	    := $(CONF)/termite
 I3BLOCKS	:= $(SWAY)/i3blocks
 WAYBAR	    := $(CONF)/waybar
 VIM			:= $(HOME)/.vim
+NVIM		:= $(CONF)/nvim
 TMUX		:= $(CONF)/tmux
 FUZZEL		:= $(CONF)/fuzzel
 QUTEBROWSER	:= $(CONF)/qutebrowser
@@ -39,6 +40,11 @@ vim:
 	mkdir -p $(VIM)
 	ln -fs $(DOTFILES)/vim/* $(VIM)/
 
+.PHONY: nvim
+nvim:
+	mkdir -p $(VIM)
+	ln -fs $(DOTFILES)/nvim/* $(NVIM)/
+
 .PHONY: bash
 bash:
 	ln -fs $(DOTFILES)/bash/bashrc $(HOME)/.bashrc
@@ -63,6 +69,7 @@ clean:
 	$(RM) $(SWAY)
 	$(RM) $(I3BLOCKS)
 	$(RM) $(VIM)
+	$(RM) $(NVIM)
 	$(RM) $(TERMITE)
 	$(RM) $(TMUX)
 	$(RM) $(FUZZEL)
