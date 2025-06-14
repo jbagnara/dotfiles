@@ -4,31 +4,25 @@ import os
 import sys
 from pathlib import Path
 
-CONFIG_FILE = Path(__file__)
-CONFIG_DIR = CONFIG_FILE.parent
+from bindings import bindings, default_bindings
+
+THIS_FILE = Path(__file__)
+CONFIG_DIR = THIS_FILE.parent
 THEMES_DIR = CONFIG_DIR / "themes"
 qute_buf = os.environ.get('QUTE_FIFO')
 
-SOURCE_FILES = [
-    CONFIG_DIR / "bindings.py",
-]
 
 term = "termite"
 editor = "vim"
 
 search_engines = {
-    'kagi':     'https://kagi.com',
-    'youtube':  'https://yewtu.be',
-    'github':   'https://github.com',
+    'kagi': 'https://kagi.com',
+    'youtube': 'https://yewtu.be',
 }
 search_default = 'kagi'
 start_page = search_engines['kagi']
 darkmode = True
 theme = 'gruvbox'
-
-
-for f in SOURCE_FILES:
-    exec(open(f).read())
 
 def qute_print(msg):
     with open(qute_buf, 'w') as fifo:
@@ -47,10 +41,9 @@ def qute_init():
     for key, val in search_engines.items():
         c.url.searchengines[key] = val + sq
 
-    for d in [default_bindings, bindings]:
-        for mode, kp in bindings.items():
-            for key, val in kp.items():
-                config.bind(key, val, mode=mode)
+    for mode, d in bindings.items():
+        for key, val in d.items():
+            config.bind(key, val, mode=mode)
 
     config.set("editor.command", [term, "-e", editor + " {file}"])
     config.set("colors.webpage.darkmode.enabled", darkmode)
@@ -61,6 +54,7 @@ def qute_init():
     else:
         qute_print(str(theme_file))
 
+# Display ONLY user defined bindings
 def dict_to_page(f, dic):
     for mode, d in dic.items():
         f.write(f"{mode:<15}\n")
@@ -68,12 +62,12 @@ def dict_to_page(f, dic):
             f.write(f"{" ":<15}{key:<15}{" ":<15}{val:<15}\n")
         f.write("\n")
 
-def display_user():
+def display_help():
     file_path = CONFIG_DIR / "user_bindings.txt"
 
     # Write bindings to the file
     with open(file_path, 'w') as f:
-        f.write(f"User Bindings from {CONFIG_FILE}\n\n")
+        f.write(f"User Bindings from {THIS_FILE}\n\n")
         dict_to_page(f, bindings)
 
     # Open the file in a new tab
@@ -97,7 +91,7 @@ def display_defaults():
 if __name__ == "__main__":
     cmd = sys.argv[1]
     if cmd == "help":
-        display_user()
+        display_help()
     if cmd == "defaults":
         display_defaults()
     
