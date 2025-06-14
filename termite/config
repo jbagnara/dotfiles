@@ -9,7 +9,7 @@
     dynamic_title = true
     urgent_on_bell = true
     clickable_url = true
-    font = Source Code Pro Medium 10
+    font = CaskaydiaCove Nerd Font 10
     letterSpace = 1
     scrollback_lines = 1000
     search_wrap = true
@@ -29,46 +29,45 @@
     # (default if unset: all graphic non-punctuation/space characters)
     #word_chars = -A-Za-z0-9,./?%&#:_=+@~
 
-[colors]
-    # special
-    foreground      = #c7ccd1
-    foreground_bold = #c7ccd1
-    cursor          = #c7ccd1
-    #background      = #080909
-    background      = rgba(0, 0, 0, 0.90)
+# Gruvbox https://github.com/morhetz/gruvbox-contrib/blob/master/termite/gruvbox-dark
+[colors] 
+    # hard contrast: background = #1d2021
+    background = #282828
+    # soft contrast: background = #32302f
+    foreground = #ebdbb2
+    foreground_bold = #ebdbb2
     
-    # black
-    color0  = #1c2023
-    color8  = #747c84
+    # dark0 + gray
+    color0 = #282828
+    color8 = #928374
     
-    # red
-    color1  = #c7ae95
-    color9  = #c7ae95
+    # neutral_red + bright_red
+    color1 = #cc241d
+    color9 = #fb4934
     
-    # green
-    color2  = #95c7ae
-    color10 = #95c7ae
+    # neutral_green + bright_green
+    color2 = #98971a
+    color10 = #b8bb26
     
-    # yellow
-    color3  = #aec795
-    color11 = #aec795
+    # neutral_yellow + bright_yellow
+    color3 = #d79921
+    color11 = #fabd2f
     
-    # blue
-    color4  = #ae95c7
-    color12 = #ae95c7
+    # neutral_blue + bright_blue
+    color4 = #458588
+    color12 = #83a598
     
-    # magenta
-    color5  = #c795ae
-    color13 = #c795ae
+    # neutral_purple + bright_purple
+    color5 = #b16286
+    color13 = #d3869b
     
-    # cyan
-    color6  = #95aec7
-    color14 = #95aec7
+    # neutral_aqua + faded_aqua
+    color6 = #689d6a
+    color14 = #8ec07c
     
-    # white
-    color7  = #c7ccd1
-    color15 = #f3f4f5
-
+    # light4 + light1
+    color7 = #a89984
+    color15 = #ebdbb2
 
 [hints]
     #foreground = #55FFFF
