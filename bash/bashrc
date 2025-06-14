@@ -15,7 +15,6 @@ set vi-ins-mode-string "+"
 set vi-cmd-mode-string ":"
 
 # set terminal emulator
-export TERM=xterm-color
 LS_COLORS=$LS_COLORS:'ow=1;34:' ; export LS_COLORS
 
 ###
