@@ -1,3 +1,5 @@
+@import 'themes/gruvbox';
+
 * {
   border: none;
   font-family: Noto Sans, sans-serif;
@@ -6,12 +8,12 @@
 
 window#waybar {
   /* background-color: rgba(18, 21, 29, 0.98); */
-  background-color: #282828;
+  background-color: $color-bg;
   /* background-color: rgba(0, 0, 0, 0); */
-  border-bottom: 3px solid #3c3836;
-  color: #ebdbb2;
+  border-bottom: 3px solid $color-bottom-border;
+  color: $color-fg;
   transition-property: background-color;
-  transition-duration: 0.5s;
+  transition-duration: .5s;
 }
 
 window#waybar.hidden {
@@ -22,6 +24,7 @@ window#waybar.hidden {
     Apply padding if emojis are rendered too tall:
     padding: 4px 10px 0px 10px;
 */
+
 #workspaces,
 #mode,
 #cpu,
@@ -37,7 +40,7 @@ window#waybar.hidden {
 #battery,
 #network,
 #tray {
-  background-color: #3c3836;
+  background-color: $color-tray-bg;
   padding: 0 10px;
   margin: 2px 0px 5px 0px;
   border: 3px solid rgba(0, 0, 0, 0);
@@ -48,86 +51,85 @@ window#waybar.hidden {
 #workspaces button {
   padding: 0 5px;
   min-width: 20px;
-  color: #3a8edb;
+  color: $color-button;
 }
 
 #workspaces button:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2)
 }
 
 #workspaces button.focused {
-  color: #d052a0;
+  color: $color-button-selected;
 }
 
 #workspaces button.urgent {
-  color: #ff598e;
+  color: $color-button-alert;
 }
 
 #custom-cpu_temp {
-  color: #ff9e35;
+  color: $color-button-cpu;
 }
 
 #custom-gpu_temp {
-  color: #44c27f;
+  color: $color-button-gpu;
 }
 
 #memory {
-  color: #d052a0;
+  color: $color-button-mem;
 }
 
 #temperature {
-  color: #ff9e35;
+  color: $color-button-temp;
 }
 
 #temperature.critical {
-  background-color: #ff598e;
-  color: #1d2021;
+  background-color: $color-temp-crit-bg;
+  color: $color-temp-crit-fg;
 }
 
 #custom-media {
-  background-color: #d052a0;
-  color: #1d2021;
+  background-color: $color-media-bg;
+  color: $color-media-fg;
 }
 
 #clock {
-  color: #ff9e35;
+  color: $color-clock;
 }
 
 #idle_inhibitor {
-  color: #928374;
+  color: $color-idle;
 }
 
 #idle_inhibitor.activated {
-  background-color: #928374;
-  color: #1d2021;
+  background-color: $color-idle-on-bg;
+  color: $color-idle-on-fg;
 }
 
 #language {
-  color: #44c27f;
+  color: $color-lang;
 }
 
 #pulseaudio {
-  color: #3a8edb;
+  color: $color-pulseaudio;
 }
 
 #pulseaudio.muted {
-  background-color: #ff598e;
-  color: #1d2021;
+  background-color: $color-pulseaudio-mute-bg;
+  color: $color-pulseaudio-mute-fg;
 }
 
 @keyframes blink {
-  to {
-    background-color: #3c3836;
-    color: #ff598e;
-  }
+    to {
+        background-color: $color-keyframes-bg;
+        color: $color-keyframes-fg;
+    }
 }
+
 #network {
-  color: #eb4fa1;
+    color: $color-network;
 }
 
 #network.disconnected {
-  background-color: #ff598e;
-  color: #1d2021;
+    background-color: $color-network-off-bg;
+    color: $color-network-off-fg;
 }
-
-/*# sourceMappingURL=style.css.map */
